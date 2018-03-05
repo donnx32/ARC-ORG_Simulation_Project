@@ -63,31 +63,33 @@ def to_densely_packed(dec):
 			bool = False
 		if c == " ":
 			bool = True
-			
-	i = 0
-	for key, value, in temp_dict.items():
-		if t[i] == " ":
+	try:	
+		i = 0
+		for key, value, in temp_dict.items():
+			if t[i] == " ":
+				i += 1
+
+			temp_dict[key] = t[i]
 			i += 1
-
-		temp_dict[key] = t[i]
-		i += 1
-		
-	i = 1
-	for e in dpd_dict[tuple(f)]:
-		if e == 0:
-			string += "0"
-		elif e == 1:
-			string += "1"
-		else:
-			string += temp_dict[e]
-		
-		# For spaces
-		if i == 3:
-			string += " "
-		elif i == 6:
-			string += " "
-		i += 1
-
+			
+		i = 1
+	
+		for e in dpd_dict[tuple(f)]:
+			if e == 0:
+				string += "0"
+			elif e == 1:
+				string += "1"
+			else:
+				string += temp_dict[e]
+			
+			# For spaces
+			if i == 3:
+				string += " "
+			elif i == 6:
+				string += " "
+			i += 1
+	except:
+		string = "Decimal is not 3 digits... :'("
 	return string
 
 def run():
