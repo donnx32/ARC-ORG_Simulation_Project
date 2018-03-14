@@ -113,6 +113,9 @@ def run():
 			
 			if dec == 0:
 				break
+			if dec < 0:
+				print("Please input a positive integer")
+				continue
 				
 			decimal_list = list(str(dec))
 
@@ -125,7 +128,7 @@ def run():
 			decimal_list = []
 		
 		except:
-			print("Please input a number")
+			print("Please input a positive integer!")
 
 # Main
 if __name__=='__main__':
